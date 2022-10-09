@@ -104,4 +104,6 @@ where current_version > 5 and requires_android > 5 ;
 from googleplaystore
 order by app;
 
+### POWERPOINT PRESENTATION
+[research ppt.pptx](https://github.com/Amitsarkar02/MYSQL-PROJECT-ON-GOOGLE-PLAY-STORE/files/9740900/research.ppt.pptx)
 
