@@ -1,12 +1,12 @@
-# MYSQL-PROJECT-ON-GOOGLE-PLAY-STORE
-SQL CASE STUDY
-create database Research_project1;
+## MYSQL-PROJECT-ON-GOOGLE-PLAY-STORE
+## SQL CASE STUDY
+* create database Research_project1;
 
-use research_project1;
+* use research_project1;
 
 select * from playstore_apps;
 
-/*1.category wise app_name*/
+* 1.category wise app_name 
 
 select app_name,company,category
 from playstore_apps
