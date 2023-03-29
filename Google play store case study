@@ -1,1 +1,117 @@
 
+create database project_1;
+
+use project_1;
+
+/*1. Create a table “Station” to store information about weather observation stations:*/
+create table station (
+id int(30) primary key,
+city varchar(20),
+state varchar(2),
+lat_n int(30),
+long_w int(30)
+);
+/*2. Insert the following records into the table:*/
+insert into station (id, city, state, lat_n, long_w) 
+values('13','phoenix','AZ','33','112'),
+('44', 'Denver', 'CO', '40','105'),
+('66','caribou','ME','47','68');
+
+/*3. Execute a query to look at table STATION in undefined order.*/
+
+select * from station;
+
+/*4. Execute a query to select Northern stations (Northern latitude > 39.7).*/
+
+select lat_n
+from station
+where lat_n >39.7;
+
+/*5. Create another table, ‘STATS’, to store normalized temperature and precipitation data:*/
+
+create table STATS(
+id int (30),
+Month int(20),
+Temp_F int(30),
+Rain_I int (20),
+primary key (id,month));
+
+/*6. Populate the table STATS with some statistics for January and July:*/
+
+insert into stats(id,month,temp_F,Rain_I)
+values('13','1','57.4','0.31'),
+		('13','7','91.7','5.15'),
+        ('44','1','27.3','0.18'),
+        ('44','7','74.8','2.11'),
+        ('66','1','6.7','2.1'),
+        ('66','7','65.8','4.52');
+
+select * from stats;
+
+/*7. Execute a query to display temperature stats (from STATS table) for each city (from Station
+table).*/
+
+select temp_f,city
+from stats as s inner join station as st on s.id=st.id
+group by city;
+
+/*8. Execute a query to look at the table STATS, ordered by month and greatest rainfall, with
+columns rearranged. It should also show the corresponding cities.*/
+
+select st.id,month,rain_i,city
+from stats as s inner join station as st on s.id=st.id
+order by month,rain_i desc;
+
+/*9.Execute a query to look at temperatures for July from table STATS, lowest temperatures first,
+picking up city name and latitude.*/
+
+select s.id,month,temp_f,city,lat_n
+from stats s inner join station as st on s.id=st.id
+where month = '7'
+order by month,temp_f asc;
+
+/*10. Execute a query to show MAX and MIN temperatures as well as average rainfall for each city.*/
+
+select city,max(temp_f),min(temp_f),avg(rain_i) as avg_rain
+from stats s inner join station as st on s.id=st.id
+group by city;
+
+/*11. Execute a query to display each city’s monthly temperature in Celcius and rainfall in
+Centimeter.*/
+
+create view stats_new1 as
+select month,(temp_f- 32) * 5/9,
+	rain_i*2.54
+    from stats;
+
+select * from stats_new;
+
+/*12. Update all rows of table STATS to compensate for faulty rain gauges known to read 0.01
+inches low.*/
+
+update stats set rain_i=rain_i+0.01;
+
+select * from stats
+
+
+/*3. Update Denver's July temperature reading as 74.9*/
+
+ Update Stats SET temp_f = 74.9
+WHERE ID = 44
+AND MONTH = 7;
+ 
+
+select * from stats
+SQL Final Project 2.sql
+Displaying SQL Final Project 2.sql.
+SQL Final Project 2 - Submit it within the deadline.
+Prateek Ivy
+•
+Jun 5, 2022
+100 points
+Due Jun 11, 2022
+Read the instructions given in the pdf document given blow and submit within the deadline. Any projects submitted after the deadline will not be considered as the submission, and will not be awarded any marks. (if it says Ms-Access anywhere, please ignore it and do in MySQL). Please upload the solution here, *don't mail*.
+
+Ivy_MS-Access_SQL Project_2016_v5.pdf
+PDF
+Class comments
